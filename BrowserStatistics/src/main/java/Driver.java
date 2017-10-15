@@ -1,12 +1,10 @@
 package main.java;
 
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Counter;
-import org.apache.hadoop.mapreduce.Counters;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
@@ -20,6 +18,8 @@ public class Driver extends Configured implements Tool {
         if (args.length != 2) {
             System.out.println("Two params are required- <input path> <output path>");
         }
+
+        getConf().set("mapreduce.output.textoutputformat.separator", ",");
         Job job = Job.getInstance(getConf());
 
         job.setJobName("Browser statistics");
@@ -32,7 +32,6 @@ public class Driver extends Configured implements Tool {
         job.setOutputValueClass(LongWritable.class);
         LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
-        getConf().set("mapreduce.output.textoutputformat.separator", ",");
 
         job.setMapperClass(BSMapper.class);
         job.setReducerClass(BSReducer.class);
