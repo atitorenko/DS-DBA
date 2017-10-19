@@ -12,10 +12,10 @@ import org.apache.hadoop.util.*;
 import java.io.IOException;
 
 /**
- * Created by Alex on 15.10.2017.
+ * Кастомизированный RecordReader для считывания не по одной строке, а сразу нескольких.
  */
 public class BSRecordReader extends RecordReader<LongWritable, Text> {
-    private final int NLINESTOPROCESS = 10;
+    private final int N_LINES_TO_PROCESS = 10;
     private LineReader in;
     private LongWritable key;
     private Text value = new Text();
@@ -87,7 +87,7 @@ public class BSRecordReader extends RecordReader<LongWritable, Text> {
         value.clear();
         final Text endLine = new Text("\n");
         int newSize = 0;
-        for(int i = 0; i < NLINESTOPROCESS; i++){
+        for(int i = 0; i < N_LINES_TO_PROCESS; i++){
             Text v = new Text();
             while (pos < end) {
                 newSize = in.readLine(v, maxLineLength,Math.max((int)Math.min(Integer.MAX_VALUE, end-pos),maxLineLength));

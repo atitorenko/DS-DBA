@@ -11,6 +11,9 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 
+/**
+ * Драйвер.
+ */
 public class Driver extends Configured implements Tool {
 
     @Override
@@ -36,10 +39,8 @@ public class Driver extends Configured implements Tool {
         job.setMapperClass(BSMapper.class);
         job.setReducerClass(BSReducer.class);
 
-        //    job.setCombinerClass(IntSumReducer.class); TODO: делать или нет?
-
         boolean success = job.waitForCompletion(true);
-        Counter counter = job.getCounters().findCounter(BS_COUNTER.MALFORMED_ROWS); //TODO: куда-то запихнуть счетчики.
+        Counter counter = job.getCounters().findCounter(BS_COUNTER.MALFORMED_ROWS);
         System.out.println("Malformed rows count:" + counter.getValue());
         return  success ? 1 : 0;
     }

@@ -1,7 +1,7 @@
 package main.java;
 
 /**
- * Created by Alex on 15.10.2017.
+ * Перечисление с названиями счетчиков.
  */
 public enum BS_COUNTER {
     MALFORMED_ROWS

@@ -7,11 +7,19 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 
 /**
- * Created by Alex on 15.10.2017.
+ * Класс редьюсера.
  */
 public class BSReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
     private LongWritable result = new LongWritable();
 
+    /**
+     * Функция консолидации данных. Суммирует вхождения каждого из браузеров в логах.
+     * @param key имя браузера.
+     * @param values коллекция вхождений в лог файле.
+     * @param context контекст.
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void reduce(Text key, Iterable<LongWritable> values,
                        Context context
     ) throws IOException, InterruptedException {
