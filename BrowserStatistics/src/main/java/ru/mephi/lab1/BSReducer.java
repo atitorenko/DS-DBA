@@ -1,4 +1,4 @@
-package main.java;
+package ru.mephi.lab1;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

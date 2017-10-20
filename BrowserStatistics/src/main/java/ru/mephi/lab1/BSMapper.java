@@ -1,4 +1,4 @@
-package main.java;
+package ru.mephi.lab1;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

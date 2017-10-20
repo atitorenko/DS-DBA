@@ -1,4 +1,4 @@
-package main.java;
+package ru.mephi.lab1;
 
 /**
  * Перечисление с названиями счетчиков.
