@@ -15,7 +15,7 @@ import java.io.IOException;
  * Кастомизированный RecordReader для считывания не по одной строке, а сразу нескольких.
  */
 public class BSRecordReader extends RecordReader<LongWritable, Text> {
-    private final int N_LINES_TO_PROCESS = 10;
+    private final int N_LINES_TO_PROCESS = 5;
     private LineReader in;
     private LongWritable key;
     private Text value = new Text();
