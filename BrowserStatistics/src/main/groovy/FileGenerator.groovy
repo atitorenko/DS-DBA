@@ -53,7 +53,7 @@ class LogLine {
     }
 
     static String getUserAgent() {
-        def agents = ["Firefox/5.0 Linux", "Opera/2.1 Windows", "Mozilla/10.0 Android",  "Mozilla/6.6 iPad"]
+        def agents = ["Firefox/5.0 Linux", "Opera/2.1 Windows", "Mozilla/10.0 Android",  "Safari/6.6 iPad"]
         return agents[uid() % agents.size()]
     }
 }

@@ -29,7 +29,7 @@ class BSMapperReducerTest extends Specification {
         mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer)
     }
 
-    def "MapperReducer test"() {
+    def "MapperToReducer test"() {
         given:
         List<Pair<Text, LongWritable>> expected  = newExpected()
 
